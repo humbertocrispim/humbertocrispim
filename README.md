@@ -1,6 +1,6 @@
 ### Hi there 👋
 
-- 🔭 Estou trabalhando com Infraestrutura
+- 🔭 Estou trabalhando com Infraestrutura 🐧
 - 📫 linkedin: https://www.linkedin.com/in/humberto-cunha-324182112/
 - 😄 Pronomes: ele/dele
-- 🌱 Estou estudando python
+- 🌱 Estou estudando python 🐍
