@@ -2,10 +2,7 @@
 
 - 🔭 Estou trabalhando com Infraestrutura 🐧
 - 😄 Pronomes: ele/dele
-- 🌱 Estou estudando python | cloud | terraform 🐍 
-- 
-- 
-- <img align="center" alt="Rafa-Python" height="30" width="40" src="https://user-images.githubusercontent.com/79642492/187722677-031e9940-5e49-4561-8f25-691f996fc5b7.png" />
+- 🌱 Estou estudando python | cloud | terraform 🐍 <img align="center" alt="Rafa-Python" height="30" width="40" src="https://user-images.githubusercontent.com/79642492/187722677-031e9940-5e49-4561-8f25-691f996fc5b7.png" />
 
 
  
