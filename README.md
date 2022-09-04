@@ -2,13 +2,7 @@
 
 - 🔭 Estou trabalhando com Infraestrutura 🐧
 - 😄 Pronomes: ele/dele
-- 🌱 Python | cloud | terraform 🐍 <img align="center" alt="Rafa-Python" height="40" width="40" src="https://user-images.githubusercontent.com/79642492/187722677-031e9940-5e49-4561-8f25-691f996fc5b7.png" />
-
-
-
-
-
-![file_type_terraform_icon_130125](https://user-images.githubusercontent.com/79642492/188317815-4f872eeb-e405-4bf7-873c-6620ce81ba66.png)
+- 🌱 Python | cloud | terraform 🐍 <img align="center" alt="Rafa-Python" height="40" width="40" src="https://user-images.githubusercontent.com/79642492/188317815-4f872eeb-e405-4bf7-873c-6620ce81ba66.png" />
 
 
 
