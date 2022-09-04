@@ -1,10 +1,7 @@
 ### Ola eu sou Humberto Cunha 👋
 
-- 🔭 Estou trabalhando com Infraestrutura 🐧
-- 😄 Pronomes: ele/dele
-- 🌱 Python | cloud | terraform 🐍 <img align="center" alt="Rafa-Python" height="40" width="40" src="https://user-images.githubusercontent.com/79642492/188317815-4f872eeb-e405-4bf7-873c-6620ce81ba66.png" />
-
-
+- 🔭 Estou trabalhando com Infraestrutura 
+- Python | cloud | terraform <img align="center" alt="Rafa-Python" height="30" width="30" src="https://user-images.githubusercontent.com/79642492/188317815-4f872eeb-e405-4bf7-873c-6620ce81ba66.png" /> | <img align="center" alt="Rafa-Python" height="30" width="30" src="https://user-images.githubusercontent.com/79642492/188318078-f7e10a17-0a53-4487-8b58-44f4ace77e4b.png" /> | <img align="center" alt="Rafa-Python" height="30" width="30" src="https://user-images.githubusercontent.com/79642492/188318226-14687bd7-dc6a-49ae-850d-5555f6da05e6.png" /> + <img align="center" alt="Rafa-Python" height="30" width="30" src="https://user-images.githubusercontent.com/79642492/188318321-a18800e6-4d07-452e-a497-e7f683b4c2e2.png" />
 
  
  <div align="center">
@@ -13,11 +10,7 @@
   <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=humbertocrispim&layout=compact&langs_count=7&theme=dracula"/>
 </div>
 
- <img align="center" alt="Rafa-Python" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg">
- <img align="center" alt="Rafa-Python" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" />
- <img align="center" alt="Rafa-Python" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" />
- <img align="center" alt="Rafa-Python" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/debian/debian-original-wordmark.svg" />
-<img align="center" alt="Rafa-Python" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" />
+
 
  
    ##
