@@ -1,4 +1,4 @@
- ### Whoami $NAME=Humberto Cunha 👋
+ ### Whoami Humberto Cunha 👋
 
 - 🔭 I'm working with Infrastructure 
 -   Python | cloud | terraform <img align="center" alt="Rafa-Python" height="30" width="30" src="https://user-images.githubusercontent.com/79642492/188317815-4f872eeb-e405-4bf7-873c-6620ce81ba66.png" /> | <img align="center" alt="Rafa-Python" height="30" width="30" src="https://user-images.githubusercontent.com/79642492/188318078-f7e10a17-0a53-4487-8b58-44f4ace77e4b.png" /> | <img align="center" alt="Rafa-Python" height="30" width="30" src="https://user-images.githubusercontent.com/79642492/188318226-14687bd7-dc6a-49ae-850d-5555f6da05e6.png" /> + <img align="center" alt="Rafa-Python" height="30" width="30" src="https://user-images.githubusercontent.com/79642492/188318321-a18800e6-4d07-452e-a497-e7f683b4c2e2.png" />
