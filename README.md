@@ -28,12 +28,17 @@ Profissional de TI com mais de 10 anos de experiência em infraestrutura e opera
 ## GitHub Stats
 
 <p align="center">
-  <img height="170" src="https://github-readme-stats.vercel.app/api?username=humbertocrispim&show_icons=true&hide_border=true&theme=transparent&include_all_commits=true&count_private=true" alt="GitHub stats" />
-  <img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=humbertocrispim&layout=compact&hide_border=true&theme=transparent&langs_count=8" alt="Top languages" />
+  <img src="https://img.shields.io/badge/dynamic/json?color=0A66C2&label=Followers&style=for-the-badge&query=%24.followers&url=https%3A%2F%2Fapi.github.com%2Fusers%2Fhumbertocrispim" alt="GitHub followers" />
+  <img src="https://img.shields.io/badge/dynamic/json?color=181717&label=Public%20Repos&style=for-the-badge&query=%24.public_repos&url=https%3A%2F%2Fapi.github.com%2Fusers%2Fhumbertocrispim" alt="Public repositories" />
+  <img src="https://img.shields.io/badge/dynamic/json?color=6f42c1&label=Following&style=for-the-badge&query=%24.following&url=https%3A%2F%2Fapi.github.com%2Fusers%2Fhumbertocrispim" alt="GitHub following" />
 </p>
 
 <p align="center">
   <img src="https://streak-stats.demolab.com?user=humbertocrispim&hide_border=true&theme=transparent" alt="GitHub streak" />
+</p>
+
+<p align="center">
+  <img src="https://ghchart.rshah.org/2f81f7/humbertocrispim" alt="GitHub contributions chart" />
 </p>
 
 ## Contato
