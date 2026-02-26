@@ -1,13 +1,299 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="0; url=cv.html">
-  <title>Currículo - Humberto Crispim</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo - Humberto Crispim</title>
+    <meta name="description" content="Currículo de Humberto Crispim, DevOps Engineer com experiência em Kubernetes (OKE), Azure, OCI, Google Cloud, Terraform, CI/CD e observabilidade.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Humberto Crispim | DevOps Engineer">
+    <meta property="og:description" content="CV online com experiência em Kubernetes, Azure, OCI, Google Cloud, Terraform, CI/CD e GitOps.">
+    <meta property="og:url" content="https://humbertocrispim.github.io/humbertocrispim/">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/humbertocrispim">
+    <meta name="twitter:card" content="summary_large_image">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9;
+            color: #334155;
+            line-height: 1.5;
+        }
+
+        .section-title {
+            @apply text-lg font-bold text-slate-800 border-b-2 border-blue-600 pb-1 mb-5 flex items-center gap-2 uppercase tracking-wide;
+        }
+
+        .experience-card {
+            @apply relative pl-8 pb-8 border-l-2 border-slate-200 last:border-0 last:pb-0;
+        }
+
+        .experience-marker {
+            @apply absolute w-4 h-4 bg-blue-600 rounded-full -left-[9px] top-1 border-4 border-white shadow-sm;
+        }
+
+        @media print {
+            body { background-color: white; padding: 0; }
+            .no-print { display: none !important; }
+            .shadow-2xl { box-shadow: none !important; }
+            .max-w-5xl { max-width: 100%; margin: 0; }
+            .rounded-xl { border-radius: 0; }
+            a { text-decoration: none; color: inherit; }
+        }
+    </style>
 </head>
-<body>
-  <p>Redirecionando para o currículo...</p>
-  <p><a href="cv.html">Abrir currículo</a></p>
+<body class="py-8 px-4 sm:px-6">
+
+    <div class="max-w-5xl mx-auto bg-white shadow-2xl rounded-xl overflow-hidden print:shadow-none">
+        
+        <!-- Header Superior -->
+        <header class="bg-slate-900 text-white p-8 sm:p-12">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
+                <div class="space-y-2">
+                    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight">Humberto Crispim</h1>
+                    <p class="text-xl text-blue-400 font-medium">DevOps Engineer | Kubernetes (OKE) | Azure | OCI | Google Cloud</p>
+                    <p class="text-slate-400 text-sm max-w-xl pt-2">
+                        Profissional de TI com mais de 10 anos de experiência, com foco atual em DevOps, automação de infraestrutura, entrega contínua e observabilidade em ambientes críticos.
+                    </p>
+                </div>
+                
+                <div class="flex flex-col gap-3 text-sm text-slate-300 w-full lg:w-auto border-t lg:border-t-0 border-slate-700 pt-6 lg:pt-0">
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-envelope text-blue-400 w-5"></i>
+                        <span>humberto.cunha.crispim@gmail.com</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-phone text-blue-400 w-5"></i>
+                        <span>62 999098566</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-location-dot text-blue-400 w-5"></i>
+                        <span>Goiânia - GO</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fab fa-linkedin text-blue-400 w-5"></i>
+                        <a href="https://linkedin.com/in/humberto-cunha-324182112/" class="hover:text-white transition-colors break-all" target="_blank" rel="noopener noreferrer">linkedin.com/in/humberto-cunha-324182112</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 flex flex-wrap gap-3 no-print">
+                <a href="cv-humberto-cunha-crispim.pdf" download class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">
+                    <i class="fas fa-download mr-2"></i>Baixar PDF
+                </a>
+                <a href="en.html" class="bg-slate-700 hover:bg-slate-600 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">
+                    <i class="fas fa-language mr-2"></i>English Version
+                </a>
+            </div>
+        </header>
+
+        <div class="flex flex-col lg:flex-row">
+            
+            <!-- Sidebar Lateral -->
+            <aside class="w-full lg:w-80 bg-slate-50 p-8 border-r border-slate-200 shrink-0 space-y-10">
+                
+                <!-- Stack Técnica -->
+                <section>
+                    <h3 class="section-title text-sm">Stack Técnica</h3>
+                    <div class="space-y-3 text-xs text-slate-700">
+                        <p><span class="text-slate-500 block text-[10px] uppercase font-bold">Cloud</span> Azure, Oracle Cloud (OCI), Google Cloud</p>
+                        <p><span class="text-slate-500 block text-[10px] uppercase font-bold">Containers</span> Docker, Kubernetes (k3s e OKE), Harbor, ACR</p>
+                        <p><span class="text-slate-500 block text-[10px] uppercase font-bold">IaC e Automação</span> Terraform, Ansible</p>
+                        <p><span class="text-slate-500 block text-[10px] uppercase font-bold">CI/CD</span> Azure DevOps, GitHub Actions</p>
+                        <p><span class="text-slate-500 block text-[10px] uppercase font-bold">Observabilidade</span> Grafana, Zabbix, Prometheus, ELK</p>
+                        <p><span class="text-slate-500 block text-[10px] uppercase font-bold">Redes e Segurança</span> Cisco, MikroTik, Fortinet, SonicWall</p>
+                        <p><span class="text-slate-500 block text-[10px] uppercase font-bold">Virtualização</span> VMware, Hyper-V</p>
+                        <p><span class="text-slate-500 block text-[10px] uppercase font-bold">Colaboração</span> Microsoft 365, SharePoint Online, Zimbra</p>
+                    </div>
+                </section>
+
+                <!-- Formação -->
+                <section>
+                    <h3 class="section-title text-sm">Formação</h3>
+                    <div class="bg-white p-3 rounded border border-slate-200 shadow-sm">
+                        <p class="font-bold text-sm">Segurança Da Informação</p>
+                        <p class="text-slate-500 text-xs">UNIP, Goiânia</p>
+                    </div>
+                </section>
+
+                <!-- Competências -->
+                <section>
+                    <h3 class="section-title text-sm">Competências</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-blue-50 text-blue-700 border border-blue-100 rounded text-xs font-medium">Comunicação Técnica</span>
+                        <span class="px-2 py-1 bg-blue-50 text-blue-700 border border-blue-100 rounded text-xs font-medium">Trabalho em Equipe</span>
+                        <span class="px-2 py-1 bg-blue-50 text-blue-700 border border-blue-100 rounded text-xs font-medium">Senso de Dono</span>
+                        <span class="px-2 py-1 bg-blue-50 text-blue-700 border border-blue-100 rounded text-xs font-medium">Resolução de Problemas</span>
+                    </div>
+                </section>
+
+                <!-- Idiomas -->
+                <section>
+                    <h3 class="section-title text-sm">Idiomas</h3>
+                    <div class="flex items-center justify-between text-sm">
+                        <span>Português</span>
+                        <span class="text-blue-600 font-bold uppercase text-[10px]">Nativo</span>
+                    </div>
+                </section>
+            </aside>
+
+            <!-- Conteúdo Principal -->
+            <main class="flex-1 p-8 sm:p-12 space-y-12">
+                
+                <!-- Experiência Profissional -->
+                <section>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-8 flex items-center gap-3">
+                        <i class="fas fa-history text-blue-600"></i> Experiência Profissional
+                    </h3>
+
+                    <div class="space-y-2">
+                        <!-- GAV Resorts - Analista de DevOps / Arquiteto de Cloud -->
+                        <div class="experience-card">
+                            <div class="experience-marker"></div>
+                            <div class="flex flex-col sm:flex-row sm:justify-between items-start mb-2 gap-2">
+                                <h4 class="text-lg font-extrabold text-slate-800 uppercase">Analista de DevOps / Arquiteto de Cloud</h4>
+                                <span class="bg-blue-600 text-white text-[10px] px-3 py-1 rounded-full font-bold whitespace-nowrap">JUL 2022 - ATUAL</span>
+                            </div>
+                            <p class="text-blue-600 font-bold text-sm mb-4">GAV Resorts, Goiânia/GO</p>
+                            <ul class="grid grid-cols-1 gap-2 text-sm text-slate-600 list-disc list-outside ml-4">
+                                <li>Implementei pipeline de CI/CD no Azure DevOps com deploy 100% automatizado, eliminando etapas manuais no processo de entrega.</li>
+                                <li>Criei cluster Kubernetes local com k3s e atuei com Kubernetes na OCI (OKE), fortalecendo ambientes de teste e operação em cloud.</li>
+                                <li>Desenhei plano de Disaster Recovery com Terraform e backups via Velero, com objetivos de RTO/RPO definidos para continuidade do serviço.</li>
+                                <li>Instalei e administrei ArgoCD para adoção de GitOps, garantindo rastreabilidade de mudanças e padronização de deploys.</li>
+                                <li>Estruturei observabilidade de métricas e logs com Grafana, Prometheus, Zabbix e ELK Stack, ampliando visibilidade operacional.</li>
+                                <li>Atuei na administração de ambientes Linux/Windows e virtualização (VMware e Hyper-V), com foco em estabilidade e continuidade dos serviços.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Grupo Farias -->
+                        <div class="experience-card">
+                            <div class="experience-marker"></div>
+                            <div class="flex flex-col sm:flex-row sm:justify-between items-start mb-2 gap-2">
+                                <h4 class="text-lg font-extrabold text-slate-800 uppercase">Analista de Redes e Infraestrutura N3</h4>
+                                <span class="bg-slate-200 text-slate-700 text-[10px] px-3 py-1 rounded-full font-bold whitespace-nowrap">NOV 2019 - JUL 2022</span>
+                            </div>
+                            <p class="text-blue-600 font-bold text-sm mb-4">Grupo Farias, Anicuns/GO</p>
+                            <ul class="grid grid-cols-1 gap-2 text-sm text-slate-600 list-disc list-outside ml-4">
+                                <li>Liderei a migração de e-mail Zimbra para Microsoft 365 e de File Server para SharePoint Online, modernizando a operação colaborativa.</li>
+                                <li>Desenvolvi dashboards estratégicos de monitoramento com Grafana e Zabbix, incluindo telemetria com SNMP e NetFlow.</li>
+                                <li>Gerenciei ativos de rede Cisco e MikroTik com protocolos TCP/IP e Spanning Tree, além de segurança perimetral com Fortinet e SonicWall.</li>
+                                <li>Configurei e administrei servidores Linux e Windows Server (2012/2019), com rotinas de backup e validação de restauração.</li>
+                                <li>Atuei em suporte N3 para incidentes críticos e apoio técnico aos níveis N1/N2, incluindo treinamento de equipes.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Help Desk Net - Técnico Redes -->
+                        <div class="experience-card">
+                            <div class="experience-marker"></div>
+                            <div class="flex flex-col sm:flex-row sm:justify-between items-start mb-2 gap-2">
+                                <h4 class="text-lg font-extrabold text-slate-800 uppercase">Técnico de redes</h4>
+                                <span class="bg-slate-200 text-slate-700 text-[10px] px-3 py-1 rounded-full font-bold whitespace-nowrap">2018 - 2019</span>
+                            </div>
+                            <p class="text-blue-600 font-bold text-sm mb-4">Help Desk Net, Anicuns</p>
+                            <ul class="grid grid-cols-1 gap-2 text-sm text-slate-600 list-disc list-outside ml-4">
+                                <li>Executei instalação e certificação de cabeamento UTP e fibra óptica em ambientes corporativos.</li>
+                                <li>Realizei implantação física de servidores, roteadores e switches, apoiando expansão e continuidade da operação.</li>
+                                <li>Atuei em troubleshooting de multiplexadores, conversores de mídia e gestão de fila de chamados técnicos.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Help Desk Net - Técnico Instalador -->
+                        <div class="experience-card">
+                            <div class="experience-marker"></div>
+                            <div class="flex flex-col sm:flex-row sm:justify-between items-start mb-2 gap-2">
+                                <h4 class="text-lg font-extrabold text-slate-800 uppercase">Técnico Instalador</h4>
+                                <span class="bg-slate-200 text-slate-700 text-[10px] px-3 py-1 rounded-full font-bold whitespace-nowrap">2014 - 2018</span>
+                            </div>
+                            <p class="text-blue-600 font-bold text-sm mb-4">Help Desk Net, Anicuns</p>
+                            <ul class="grid grid-cols-1 gap-2 text-sm text-slate-600 list-disc list-outside ml-4">
+                                <li>Atuei em operações de redes telecom FTTx e FTTH (GPON), com foco em instalação e manutenção de links.</li>
+                                <li>Apoiei monitoria de equipes de campo e construção de backbone, garantindo padrão técnico nas ativações.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projetos DevOps -->
+                <section>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                        <i class="fas fa-diagram-project text-blue-600"></i> Projetos DevOps
+                    </h3>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="p-4 border border-slate-200 rounded-lg bg-slate-50">
+                            <h5 class="font-bold text-slate-800 text-sm">Pipeline CI/CD 100% automatizado com Azure DevOps</h5>
+                            <p class="text-xs text-slate-600 mt-2"><span class="font-semibold">Stack:</span> Azure DevOps, Docker, Kubernetes</p>
+                            <p class="text-xs text-slate-600 mt-1"><span class="font-semibold">Impacto:</span> deploy totalmente automatizado, com redução de intervenção manual em produção.</p>
+                        </div>
+                        <div class="p-4 border border-slate-200 rounded-lg bg-slate-50">
+                            <h5 class="font-bold text-slate-800 text-sm">Cluster Kubernetes local (k3s) e OCI Kubernetes (OKE)</h5>
+                            <p class="text-xs text-slate-600 mt-2"><span class="font-semibold">Stack:</span> k3s, Kubernetes, OCI (OKE), Linux</p>
+                            <p class="text-xs text-slate-600 mt-1"><span class="font-semibold">Impacto:</span> padronização de ambientes local e cloud para testes, validações e operação.</p>
+                        </div>
+                        <div class="p-4 border border-slate-200 rounded-lg bg-slate-50">
+                            <h5 class="font-bold text-slate-800 text-sm">Plano de DR com Terraform e Velero</h5>
+                            <p class="text-xs text-slate-600 mt-2"><span class="font-semibold">Stack:</span> Terraform, Velero, Kubernetes</p>
+                            <p class="text-xs text-slate-600 mt-1"><span class="font-semibold">Impacto:</span> estratégia de recuperação com backups versionados e metas de continuidade (RTO/RPO).</p>
+                        </div>
+                        <div class="p-4 border border-slate-200 rounded-lg bg-slate-50">
+                            <h5 class="font-bold text-slate-800 text-sm">GitOps com instalação e administração de ArgoCD</h5>
+                            <p class="text-xs text-slate-600 mt-2"><span class="font-semibold">Stack:</span> ArgoCD, Git, Kubernetes</p>
+                            <p class="text-xs text-slate-600 mt-1"><span class="font-semibold">Impacto:</span> controle declarativo de deploys e rastreabilidade de alterações por pull request.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Certificações em Destaque -->
+                <section>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                        <i class="fas fa-medal text-blue-600"></i> Certificações Relevantes para DevOps
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-4 border border-slate-100 bg-slate-50 rounded-lg flex flex-col justify-between hover:bg-white hover:shadow-md transition-all">
+                            <div>
+                                <h5 class="font-bold text-slate-800 text-sm">Azure Fundamentals (AZ-900)</h5>
+                                <p class="text-xs text-slate-500">Microsoft (2022)</p>
+                            </div>
+                            <div class="mt-2 text-[10px] font-bold text-blue-600">CLOUD</div>
+                        </div>
+                        <div class="p-4 border border-slate-100 bg-slate-50 rounded-lg flex flex-col justify-between hover:bg-white hover:shadow-md transition-all">
+                            <div>
+                                <h5 class="font-bold text-slate-800 text-sm">Descomplicando Kubernetes</h5>
+                                <p class="text-xs text-slate-500">LinuxTips (2024)</p>
+                            </div>
+                            <div class="mt-2 text-[10px] font-bold text-blue-600">KUBERNETES</div>
+                        </div>
+                        <div class="p-4 border border-slate-100 bg-slate-50 rounded-lg flex flex-col justify-between hover:bg-white hover:shadow-md transition-all">
+                            <div>
+                                <h5 class="font-bold text-slate-800 text-sm">Docker Essentials</h5>
+                                <p class="text-xs text-slate-500">Curso complementar</p>
+                            </div>
+                            <div class="mt-2 text-[10px] font-bold text-blue-600">CONTAINERS</div>
+                        </div>
+                        <div class="p-4 border border-slate-100 bg-slate-50 rounded-lg flex flex-col justify-between hover:bg-white hover:shadow-md transition-all">
+                            <div>
+                                <h5 class="font-bold text-slate-800 text-sm">DevOps Essentials</h5>
+                                <p class="text-xs text-slate-500">4Linux</p>
+                            </div>
+                            <div class="mt-2 text-[10px] font-bold text-blue-600">DEVOPS</div>
+                        </div>
+                    </div>
+                    <div class="mt-5 text-xs text-slate-600">
+                        <p><span class="font-semibold">Outras certificações/cursos:</span> MTCNA (MikroTik), Fortinet NSE 1 &amp; 2, Kubernetes Essentials, Go Essentials, Python Essentials, Agile Essentials (Scrum/Kanban), Linux Essentials/Fundamentals/SysAdmin (4Linux), Preparatório LPIC-1, Windows Server 2016/2019 e Microsoft Hyper-V Essentials.</p>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+        
+        <!-- Rodapé com Botão de Ação -->
+        <footer class="bg-slate-900 p-6 text-center no-print">
+            <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-full shadow-xl transition-all hover:scale-105 active:scale-95">
+                <i class="fas fa-file-pdf mr-2"></i> IMPRIMIR CURRÍCULO
+            </button>
+        </footer>
+    </div>
+
 </body>
 </html>
