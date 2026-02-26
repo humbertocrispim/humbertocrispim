@@ -21,7 +21,7 @@ STACK TÉCNICA
 
 EXPERIÊNCIA PROFISSIONAL
 
-Analista de DevOps / Arquiteto de Cloud
+DevOps
 GAV Resorts | Goiânia/GO | Jul/2022 - Atual
 - Implementei pipeline de CI/CD no Azure DevOps com deploy 100% automatizado, eliminando etapas manuais no processo de entrega.
 - Criei cluster Kubernetes local com k3s e atuei com Kubernetes na OCI (OKE), fortalecendo ambientes de teste e operação em cloud.
