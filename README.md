@@ -1,6 +1,10 @@
 <h1 align="center">Humberto Crispim</h1>
 <p align="center"><strong>DevOps Engineer | Kubernetes (OKE) | Azure | OCI | Google Cloud</strong></p>
 
+## CV Online
+
+[Acessar meu currículo no GitHub Pages](https://humbertocrispim.github.io/humbertocrispim/)
+
 ## Whoami
 
 Profissional de TI com mais de 10 anos de experiência em infraestrutura e operações, com foco atual em DevOps, automação e confiabilidade de ambientes críticos.
