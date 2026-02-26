@@ -54,14 +54,16 @@ PROJETOS DEVOPS
 FORMAÇÃO
 Segurança da Informação - UNIP, Goiânia/GO (em curso)
 
+TREINAMENTOS LINUXTIPS (EM ANDAMENTO)
+- Descomplicando Kubernetes (25% completo, acesso até jul/2027)
+- Kubernetes Essentials (12% completo)
+- Docker Essentials, Go Essentials, Linux Essentials, Python Essentials e Agile Essentials (em andamento)
+
 CERTIFICAÇÕES E CURSOS
 - Azure Fundamentals (AZ-900)
-- Descomplicando Kubernetes (LinuxTips)
-- Docker Essentials
 - DevOps Essentials (4Linux)
 - MTCNA (MikroTik)
 - Fortinet NSE 1 & 2
-- Kubernetes Essentials
-- Go Essentials
-- Python Essentials
-- Agile Essentials (Scrum/Kanban)
+- Linux Essentials/Fundamentals/SysAdmin (4Linux)
+- Preparatório LPIC-1
+- Windows Server 2016/2019 e Microsoft Hyper-V Essentials
