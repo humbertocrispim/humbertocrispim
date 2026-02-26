@@ -1,0 +1,67 @@
+HUMBERTO CRISPIM
+DevOps Engineer | Kubernetes (OKE) | Azure | OCI | Google Cloud
+Goiânia - GO, Brasil
+Email: humberto.cunha.crispim@gmail.com
+Telefone: +55 62 99909-8566
+LinkedIn: https://linkedin.com/in/humberto-cunha-324182112/
+
+RESUMO PROFISSIONAL
+Profissional de TI com mais de 10 anos de experiência, com foco atual em DevOps, automação de infraestrutura, entrega contínua e observabilidade em ambientes críticos.
+Experiência em Kubernetes, cloud (Azure/OCI/Google Cloud), Infrastructure as Code com Terraform e Ansible, e construção de pipelines CI/CD no Azure DevOps.
+
+STACK TÉCNICA
+- Cloud: Azure, Oracle Cloud (OCI), Google Cloud
+- Containers: Docker, Kubernetes (k3s e OKE), Harbor, ACR
+- IaC e automação: Terraform, Ansible
+- CI/CD: Azure DevOps, GitHub Actions
+- Observabilidade: Grafana, Zabbix, Prometheus, ELK
+- Redes e segurança: Cisco, MikroTik, Fortinet, SonicWall
+- Sistemas: Linux, Windows Server
+
+EXPERIÊNCIA PROFISSIONAL
+
+Analista de DevOps / Arquiteto de Cloud
+GAV Resorts | Goiânia/GO | Jul/2022 - Atual
+- Implementei pipeline de CI/CD no Azure DevOps com deploy 100% automatizado, eliminando etapas manuais no processo de entrega.
+- Criei cluster Kubernetes local com k3s e atuei com Kubernetes na OCI (OKE), fortalecendo ambientes de teste e operação em cloud.
+- Desenhei plano de Disaster Recovery com Terraform e backups via Velero, com objetivos de RTO/RPO definidos para continuidade do serviço.
+- Instalei e administrei ArgoCD para adoção de GitOps, garantindo rastreabilidade de mudanças e padronização de deploys.
+
+Analista de Redes e Infraestrutura N3
+Grupo Farias | Anicuns/GO | Nov/2019 - Jul/2022
+- Liderança na migração de Zimbra para Microsoft 365 e de File Server para SharePoint Online.
+- Desenvolvimento de dashboards estratégicos com Grafana e Zabbix para acompanhamento proativo de performance.
+- Gestão de ativos de rede Cisco e MikroTik, com segurança perimetral em Fortinet e SonicWall.
+- Suporte N3 para incidentes críticos de infraestrutura.
+
+Técnico de Redes
+Help Desk Net | Anicuns/GO | 2018 - 2019
+- Instalação e certificação de cabeamento UTP e fibra óptica.
+- Implantação física de servidores, roteadores e switches.
+- Troubleshooting de multiplexadores, conversores de mídia e chamados técnicos.
+
+Técnico Instalador
+Help Desk Net | Anicuns/GO | 2014 - 2018
+- Operação e manutenção de redes FTTx e FTTH (GPON).
+- Apoio à monitoria de equipes de campo e construção de backbone.
+
+PROJETOS DEVOPS
+- Pipeline CI/CD no Azure DevOps com deploy 100% automatizado.
+- Cluster Kubernetes local (k3s) e Kubernetes na OCI (OKE) para testes e operação.
+- Plano de Disaster Recovery com Terraform e Velero (backup/restore).
+- Implementação e administração de ArgoCD para GitOps.
+
+FORMAÇÃO
+Segurança da Informação - UNIP, Goiânia/GO (em curso)
+
+CERTIFICAÇÕES E CURSOS
+- Azure Fundamentals (AZ-900)
+- Descomplicando Kubernetes (LinuxTips)
+- Docker Essentials
+- DevOps Essentials (4Linux)
+- MTCNA (MikroTik)
+- Fortinet NSE 1 & 2
+- Kubernetes Essentials
+- Go Essentials
+- Python Essentials
+- Agile Essentials (Scrum/Kanban)
