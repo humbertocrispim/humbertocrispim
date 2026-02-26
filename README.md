@@ -1,9 +1,6 @@
 <h1 align="center">Humberto Crispim</h1>
 <p align="center"><strong>DevOps Engineer | Kubernetes (OKE) | Azure | OCI | Google Cloud</strong></p>
 
-## CV Online
-
-[Acessar meu currículo no GitHub Pages](https://humbertocrispim.github.io/humbertocrispim/)
 
 ## Whoami
 
