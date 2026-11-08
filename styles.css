@@ -260,3 +260,22 @@ body{background:#121212}
 .term-body .y-dash{color:#8b949e}
 .term-body:focus-visible{outline:2px solid #8adeff;outline-offset:-2px}
 @media(max-width:600px){.term-body{height:340px}}
+
+/* ---------- Página Blog (blog.html) ---------- */
+.blog-page{padding-top:96px}
+.archive-head{margin-bottom:40px}
+.archive-head .kicker{margin-bottom:16px}
+.archive-head h1{margin:0 0 16px;font-size:48px;line-height:56px;font-weight:700;letter-spacing:-1px;color:#e3e6e8}
+.section .archive-lead{margin:0;max-width:640px;font-size:18px;line-height:28px;color:#9ca8b4}
+.archive-year{margin-top:48px}
+.archive-year h2{margin:0 0 8px;font-size:14px;line-height:21px;font-weight:600;letter-spacing:2px;color:#9ca8b4}
+.blog-page .toolbar{justify-content:flex-start;gap:16px 24px}
+.cat-pills a{padding:5px 12px;border-radius:8px;background:#ffffff14;color:#e3e6e8;font:400 14px/21px "Plus Jakarta Sans",system-ui,sans-serif;transition:background .2s}
+.cat-pills a:hover{background:#ffffff26}
+.all-posts{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-size:16px;font-weight:700;color:#e3e6e8}
+.all-posts span{transition:transform .2s}
+.all-posts:hover{color:#8adeff}.all-posts:hover span{transform:translateX(4px)}
+.navlinks a[aria-current="page"]{color:#8adeff}
+@media(max-width:760px){.blog-page{padding-top:56px}.archive-head h1{font-size:34px;line-height:40px}.section .archive-lead{font-size:16px;line-height:26px}}
+/* Menu visível no celular (só dois links: Blog e Sobre) */
+@media(max-width:760px){.navlinks{display:flex;margin-left:auto}.navlinks a{padding:0 10px;font-size:15px}}

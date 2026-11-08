@@ -1,4 +1,4 @@
-// Blog: renderiza a lista de posts (index.html) e a página de um post (post.html).
+// Blog: artigos recentes (index.html), página Blog com todos os artigos (blog.html) e página de um post (post.html).
 (()=>{
 const POSTS=(window.POSTS||[]).slice().sort((a,b)=>b.date.localeCompare(a.date));
 
@@ -41,9 +41,11 @@ function markdown(src){
   return out.join('\n');
 }
 
-// ---------- Home ----------
-// Quantos artigos aparecem antes do botão "Mostrar mais". Aumente quando houver mais posts.
-const PAGE=12;
+// ---------- Home: só os artigos mais recentes ----------
+const RECENT=5;
+const blogUrl=t=>'./blog.html'+(t?'?tag='+encodeURIComponent(t):'');
+const allTags=[...new Set(POSTS.flatMap(p=>p.tags||[]))].sort();
+const articleHtml=p=>`<article class="article-item"><h3><a href="${postUrl(p)}">${esc(p.title)}</a></h3><p class="sub"><time datetime="${esc(p.date)}">${fmtDate(p.date)}</time>${(p.tags||[]).length?' · '+p.tags.map(esc).join(', '):''}</p><p class="excerpt">${esc(p.summary)}</p><a class="read-more" href="${postUrl(p)}" aria-label="Ler mais: ${esc(p.title)}">Ler mais <span aria-hidden="true">→</span></a></article>`;
 const featuredEl=document.querySelector('#featured-list');
 if(featuredEl){
   const featured=POSTS.filter(p=>p.featured).slice(0,5);
@@ -52,27 +54,34 @@ if(featuredEl){
 }
 const listEl=document.querySelector('#post-list');
 if(listEl){
-  const chipsEl=document.querySelector('#tag-filter'),more=document.querySelector('#show-more'),moreWrap=document.querySelector('#more-wrap');
-  const tags=[...new Set(POSTS.flatMap(p=>p.tags||[]))].sort();
-  const initial=new URLSearchParams(location.search).get('tag');
-  const state={tag:tags.includes(initial)?initial:null,limit:PAGE};
-  chipsEl.innerHTML=['',...tags].map(t=>`<button type="button" data-tag="${esc(t)}">${t?esc(t):'Todas'}</button>`).join('');
+  listEl.innerHTML=POSTS.slice(0,RECENT).map(articleHtml).join('')||'<p class="empty">Nenhum artigo ainda.</p>';
+  const chipsEl=document.querySelector('#tag-filter');
+  if(chipsEl)chipsEl.innerHTML=allTags.map(t=>`<a href="${blogUrl(t)}">${esc(t)}</a>`).join('');
+}
+
+// ---------- Página Blog: todos os artigos, busca, categorias e anos ----------
+const archive=document.querySelector('#archive');
+if(archive){
+  const search=document.querySelector('#archive-search'),chips=document.querySelector('#archive-tags'),count=document.querySelector('#archive-count');
+  const params=new URLSearchParams(location.search);
+  const state={tag:allTags.includes(params.get('tag'))?params.get('tag'):null,q:''};
+  const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+  chips.innerHTML=['',...allTags].map(t=>`<button type="button" data-tag="${esc(t)}">${t?esc(t):'Todas'}</button>`).join('');
   function render(){
-    chipsEl.querySelectorAll('button').forEach(c=>c.setAttribute('aria-pressed',String((c.dataset.tag||null)===state.tag)));
-    const items=POSTS.filter(p=>!state.tag||(p.tags||[]).includes(state.tag));
-    listEl.innerHTML=items.length?items.slice(0,state.limit).map(p=>`<article class="article-item"><h3><a href="${postUrl(p)}">${esc(p.title)}</a></h3><p class="sub"><time datetime="${esc(p.date)}">${fmtDate(p.date)}</time>${(p.tags||[]).length?' · '+p.tags.map(esc).join(', '):''}</p><p class="excerpt">${esc(p.summary)}</p><a class="read-more" href="${postUrl(p)}" aria-label="Ler mais: ${esc(p.title)}">Ler mais <span aria-hidden="true">→</span></a></article>`).join('')
-      :'<p class="empty">Nenhum artigo nesta categoria.</p>';
-    const hasMore=items.length>state.limit;moreWrap.hidden=!hasMore;
+    chips.querySelectorAll('button').forEach(c=>c.setAttribute('aria-pressed',String((c.dataset.tag||null)===state.tag)));
+    const q=norm(state.q.trim());
+    const items=POSTS.filter(p=>(!state.tag||(p.tags||[]).includes(state.tag))&&(!q||norm(p.title+' '+p.summary+' '+(p.tags||[]).join(' ')).includes(q)));
+    count.textContent=items.length===1?'1 artigo.':items.length+' artigos.';
+    if(!items.length){archive.innerHTML='<p class="empty">Nenhum artigo encontrado.</p>';return;}
+    const years=[...new Set(items.map(p=>p.date.slice(0,4)))];
+    archive.innerHTML=years.map(y=>`<section class="archive-year"><h2>${y}</h2><ul class="post-list">${items.filter(p=>p.date.startsWith(y)).map(p=>`<li class="post-row"><a href="${postUrl(p)}"><time datetime="${esc(p.date)}">${fmtDate(p.date).replace(/ \d{4}$/,'')}</time><div><h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p><div class="tags">${tagsHtml(p.tags)}</div></div><span class="arrow" aria-hidden="true">→</span></a></li>`).join('')}</ul></section>`).join('');
   }
-  chipsEl.addEventListener('click',e=>{const c=e.target.closest('button');if(!c)return;state.tag=c.dataset.tag||null;state.limit=PAGE;render();});
-  more.addEventListener('click',()=>{state.limit+=PAGE;render();});
+  chips.addEventListener('click',e=>{const c=e.target.closest('button');if(!c)return;state.tag=c.dataset.tag||null;history.replaceState(null,'',blogUrl(state.tag));render();});
+  search.addEventListener('input',()=>{state.q=search.value;render();});
   render();
 }
 const footerTags=document.querySelector('#footer-tags');
-if(footerTags){
-  const home=document.querySelector('#post-list')?'':'./index.html';
-  footerTags.innerHTML=[...new Set(POSTS.flatMap(p=>p.tags||[]))].sort().map(t=>`<li><a href="${home||'./index.html'}?tag=${encodeURIComponent(t)}#posts">${esc(t)}</a></li>`).join('');
-}
+if(footerTags)footerTags.innerHTML=allTags.map(t=>`<li><a href="${blogUrl(t)}">${esc(t)}</a></li>`).join('');
 
 // ---------- Página do post ----------
 const body=document.querySelector('#post-body');
@@ -80,11 +89,11 @@ if(body){
   const slug=new URLSearchParams(location.search).get('p');
   const idx=POSTS.findIndex(p=>p.slug===slug),post=POSTS[idx];
   const title=document.querySelector('#post-title'),meta=document.querySelector('#post-meta'),summary=document.querySelector('#post-summary'),tagsEl=document.querySelector('#post-tags'),nav=document.querySelector('#post-nav');
-  if(!post){title.textContent='Post não encontrado';summary.textContent='O endereço pode estar errado ou o post foi removido.';body.innerHTML='<p><a href="./index.html#posts">Ver todos os posts</a></p>';return;}
+  if(!post){title.textContent='Post não encontrado';summary.textContent='O endereço pode estar errado ou o post foi removido.';body.innerHTML='<p><a href="./blog.html">Ver todos os artigos</a></p>';return;}
   document.title=post.title+' — Humberto Crispim';
   title.textContent=post.title;summary.textContent=post.summary;
   meta.innerHTML=`<time datetime="${esc(post.date)}">${fmtDate(post.date)}</time>`;
-  tagsEl.innerHTML=(post.tags||[]).map(t=>`<a class="tag" href="./index.html?tag=${encodeURIComponent(t)}#posts">${esc(t)}</a>`).join('');
+  tagsEl.innerHTML=(post.tags||[]).map(t=>`<a class="tag" href="${blogUrl(t)}">${esc(t)}</a>`).join('');
   const newer=POSTS[idx-1],older=POSTS[idx+1];
   nav.innerHTML=(older?`<a href="${postUrl(older)}"><span>← Anterior</span>${esc(older.title)}</a>`:'<span></span>')+(newer?`<a class="next" href="${postUrl(newer)}"><span>Próximo →</span>${esc(newer.title)}</a>`:'');
   fetch('./posts/'+encodeURIComponent(post.slug)+'.md').then(r=>{if(!r.ok)throw new Error(r.status);return r.text();}).then(text=>{
