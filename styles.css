@@ -279,3 +279,19 @@ body{background:#121212}
 @media(max-width:760px){.blog-page{padding-top:56px}.archive-head h1{font-size:34px;line-height:40px}.section .archive-lead{font-size:16px;line-height:26px}}
 /* Menu visível no celular (só dois links: Blog e Sobre) */
 @media(max-width:760px){.navlinks{display:flex;margin-left:auto}.navlinks a{padding:0 10px;font-size:15px}}
+
+/* Logo sem o "C." do meio: só "Humberto Crispim" */
+.logo .logo-gap{display:inline-block;width:.3em}
+
+/* Logo digitada (site.js): camada por cima do nome, com cursor de bloco piscando */
+a.logo .logo-first,a.logo .logo-last{animation:none}
+a.logo{position:relative}
+.logo-layer{position:absolute;left:0;top:0;display:flex;align-items:center;height:100%;white-space:pre;pointer-events:none}
+.logo-cursor{display:inline-block;width:.5em;height:.95em;margin-left:2px;background:#e3e6e8;animation:blink 1s step-end infinite;transition:opacity .6s}
+.logo-cursor.is-done{opacity:0}
+
+/* Páginas Blog e de artigo: fundo preto sólido, sem degradê nem efeito animado */
+body.blog-index,body.post-page{background:#000}
+body.blog-index #sky,body.blog-index #atmos,body.blog-index #light,body.blog-index #noise,body.post-page #sky,body.post-page #atmos,body.post-page #light,body.post-page #noise{display:none}
+body.blog-index .shell,body.post-page .shell{background:#000}
+body.blog-index nav,body.post-page nav{background:#000;backdrop-filter:none;-webkit-backdrop-filter:none}
