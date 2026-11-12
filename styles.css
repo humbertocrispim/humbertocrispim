@@ -295,3 +295,107 @@ body.blog-index,body.post-page{background:#000}
 body.blog-index #sky,body.blog-index #atmos,body.blog-index #light,body.blog-index #noise,body.post-page #sky,body.post-page #atmos,body.post-page #light,body.post-page #noise{display:none}
 body.blog-index .shell,body.post-page .shell{background:#000}
 body.blog-index nav,body.post-page nav{background:#000;backdrop-filter:none;-webkit-backdrop-filter:none}
+
+
+
+/* ---------- Página Blog em cards ---------- */
+.blog-page .toolbar{flex-direction:column;align-items:stretch;gap:20px;margin-bottom:32px}
+.blog-page .search{max-width:360px}
+.blog-page .cat-pills{gap:10px}
+.blog-page .cat-pills button{padding:8px 16px;border:1px solid #ffffff38;border-radius:999px;background:transparent;color:#e3e6e8;font:500 13px/1 "Plus Jakarta Sans",system-ui,sans-serif;letter-spacing:.6px;text-transform:uppercase;transition:background .2s,border-color .2s,color .2s}
+.blog-page .cat-pills button:hover{border-color:#ffffff80;background:transparent}
+.blog-page .cat-pills button[aria-pressed="true"]{background:#e3e6e8;border-color:#e3e6e8;color:#0b0d10;font-weight:600}
+.post-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.post-card{display:flex;flex-direction:column;border:1px solid #ffffff1a;border-radius:8px;background:#0d0f12;overflow:hidden;transition:transform .2s,border-color .2s}
+.post-card:hover,.post-card:focus-visible{transform:translateY(-3px);border-color:#ffffff40;outline:none}
+.post-cover{position:relative;aspect-ratio:16/9;background:#14171b;overflow:hidden}
+.post-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.post-card:hover .post-cover img{transform:scale(1.03)}
+.cover-fallback{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:20px 22px;background:radial-gradient(120% 90% at 85% 0%,#2a3038 0%,transparent 60%),linear-gradient(160deg,#1a1d22,#0e1013);}
+.cover-fallback::after{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:24px 24px;pointer-events:none}
+.cover-tag{align-self:flex-start;font:500 11px/1 "JetBrains Mono",ui-monospace,monospace;letter-spacing:1.5px;text-transform:uppercase;color:#9ca8b4;padding:6px 9px;border:1px solid #ffffff26;border-radius:999px;position:relative;z-index:1}
+.cover-title{position:relative;z-index:1;font-size:clamp(20px,2vw,26px);line-height:1.15;font-weight:700;letter-spacing:-.5px;color:#e3e6e8;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.post-card-body{display:flex;flex-direction:column;gap:12px;padding:20px 20px 22px;flex:1}
+.post-card-body time{font:500 12px/1 "Plus Jakarta Sans",system-ui,sans-serif;letter-spacing:.6px;color:#9ca8b4}
+.post-card-body h3{margin:0;font-size:20px;line-height:28px;font-weight:600;letter-spacing:-.2px;color:#e3e6e8;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.post-card-tags{display:flex;flex-wrap:wrap;gap:6px}
+.post-card-tags span{font-size:12px;line-height:1;padding:6px 9px;border:1px solid #ffffff26;border-radius:6px;color:#c9d1d9}
+.post-author{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:6px}
+.post-author img{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#1a1d22}
+.post-author small{display:block;font-size:12px;line-height:16px;color:#9ca8b4}
+.post-author span{display:block;font-size:14px;line-height:18px;color:#e3e6e8}
+@media(max-width:1000px){.post-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.post-grid{grid-template-columns:1fr}.blog-page .search{max-width:none}}
+.blog-page .search{flex:none;height:44px}
+.post-grid .post-card{padding:0;gap:0;min-height:0;background:#0d0f12;border-radius:8px}
+.post-grid .post-card:hover{background:#0d0f12}
+
+/* Página Blog: só título e categorias no topo; botão "Veja mais" no fim */
+.blog-page .archive-head{margin-bottom:24px}
+.blog-page .archive-head h1{margin:0}
+.blog-page #archive-tags{margin-bottom:32px}
+.more-row{display:flex;justify-content:center;margin-top:48px}
+.more-row[hidden]{display:none}
+.more-btn{height:36px;padding:0 14px;border:0;border-radius:6px;background:#e3e6e8;color:#0b0d10;font:600 14px/1 "Plus Jakarta Sans",system-ui,sans-serif;cursor:pointer;transition:background .2s}
+.more-btn:hover{background:#fff}
+.more-btn:focus-visible{outline:2px solid #8adeff;outline-offset:3px}
+
+/* ---------- TL;DR com IA (página do post), no estilo dos botões da Vercel ---------- */
+.tldr{position:relative;display:inline-flex;align-items:stretch;height:36px;margin-top:24px;border:1px solid #2e2e2e;border-radius:6px;background:#0a0a0a;transition:border-color .15s}
+.tldr[hidden]{display:none}
+.tldr:hover{border-color:#454545}
+.tldr-link{display:flex;align-items:center;gap:8px;padding:0 12px;color:#ededed;font-size:14px;line-height:20px;font-weight:500;border-radius:5px 0 0 5px;transition:background .15s}
+.tldr-link:hover{background:#1a1a1a}
+.tldr-icon{color:#a1a1a1;flex-shrink:0}
+.tldr-link:hover .tldr-icon{color:#ededed}
+.tldr-hint{font:500 11px/1 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.3px;color:#a1a1a1;padding:3px 6px;border:1px solid #2e2e2e;border-radius:4px}
+.tldr-more{display:grid;place-items:center;width:34px;border:0;border-left:1px solid #2e2e2e;border-radius:0 5px 5px 0;background:transparent;color:#a1a1a1;cursor:pointer;transition:background .15s,color .15s}
+.tldr-more:hover,.tldr-more[aria-expanded="true"]{color:#ededed;background:#1a1a1a}
+.tldr-link:focus-visible,.tldr-more:focus-visible,.tldr-menu a:focus-visible{outline:2px solid #8adeff;outline-offset:2px}
+.tldr-menu{position:absolute;top:calc(100% + 6px);right:0;z-index:20;min-width:160px;padding:4px;border:1px solid #2e2e2e;border-radius:8px;background:#0a0a0a;box-shadow:0 8px 24px #000c}
+.tldr-menu[hidden]{display:none}
+.tldr-menu a{display:block;padding:8px 10px;border-radius:4px;font-size:14px;line-height:20px;color:#ededed}
+.tldr-menu a:hover{background:#1a1a1a}
+/* Capa dos cards um pouco mais panorâmica (2:1) para ilustrações largas */
+.post-cover{aspect-ratio:2/1}
+
+/* ---------- Página Blog no estilo de vercel.com/blog ----------
+   Cards só de texto. Destaques: fundo #0a0a0a, cantos 2px, título 32/40px, resumo no rodapé.
+   Grade: sem fundo (ganha fundo no hover), título 24/32px. Filtros em texto com o ativo em fundo cinza. */
+.blog-page .archive-head h1{font-size:48px;line-height:56px;font-weight:600;letter-spacing:-1.5px}
+.vc-filters{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 48px}
+.vc-filters button{height:40px;padding:0 14px;border:0;border-radius:999px;background:transparent;color:#ededed;font:400 14px/1 "Plus Jakarta Sans",system-ui,sans-serif;cursor:pointer;transition:background .15s,color .15s}
+.vc-filters button:hover{background:#ffffff10}
+.vc-filters button[aria-pressed="true"]{background:#1f1f1f;color:#fff}
+.vc-filters button:focus-visible{outline:2px solid #8adeff;outline-offset:2px}
+.vc-row,.vc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.vc-row{margin-bottom:56px}
+.vc-card{display:flex;flex-direction:column;gap:16px;padding:24px 24px 32px;border-radius:2px;color:#ededed;transition:background .2s}
+.vc-card:focus-visible{outline:2px solid #8adeff;outline-offset:2px}
+.vc-featured{min-height:420px;background:#0a0a0a}
+.vc-featured:hover{background:#111}
+.vc-grid .vc-card{min-height:240px}
+.vc-grid .vc-card:hover{background:#0a0a0a}
+.vc-meta{display:flex;gap:8px;font-size:14px;line-height:20px}
+.vc-meta time{color:#ededed}
+.vc-meta span{color:#a1a1a1;text-transform:capitalize}
+.vc-card h3{margin:0;font-size:24px;line-height:32px;font-weight:500;letter-spacing:-.6px;color:#ededed;text-wrap:balance}
+.vc-featured h3{font-size:32px;line-height:40px;letter-spacing:-1.28px}
+.vc-card p{margin:auto 0 0;font-size:14px;line-height:20px;color:#a1a1a1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.vc-author{display:flex;align-items:center;gap:8px;margin-top:auto;font-size:14px;line-height:20px}
+.vc-featured .vc-author{margin-top:0}
+.vc-author img{width:20px;height:20px;border-radius:50%;background:#1f1f1f;object-fit:cover}
+.vc-author span{color:#ededed}
+.vc-author small{font-size:14px;color:#a1a1a1}
+@media(max-width:1000px){.vc-row,.vc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.vc-featured{min-height:340px}}
+@media(max-width:640px){.vc-row,.vc-grid{grid-template-columns:1fr;gap:12px}.vc-featured{min-height:0}.vc-featured h3{font-size:26px;line-height:32px}.vc-grid .vc-card{min-height:0}.blog-page .archive-head h1{font-size:36px;line-height:44px}}
+
+
+
+/* Hover nos cards do Blog: resumo digitado com cursor de bloco (blog.js) */
+.vc-sum{position:relative}
+.vc-grid .vc-sum{visibility:hidden;margin-top:-4px}
+.vc-grid .vc-sum.is-typing{visibility:visible}
+.vc-sum.is-typing{color:transparent}
+.type-layer{position:absolute;inset:0;color:#a1a1a1;pointer-events:none;overflow:hidden}
+.type-cursor{display:inline-block;width:.5em;height:1em;margin-left:2px;vertical-align:-.15em;background:#ededed;animation:blink 1s step-end infinite}

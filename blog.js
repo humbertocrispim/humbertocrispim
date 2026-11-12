@@ -59,29 +59,97 @@ if(listEl){
   if(chipsEl)chipsEl.innerHTML=allTags.map(t=>`<a href="${blogUrl(t)}">${esc(t)}</a>`).join('');
 }
 
-// ---------- Página Blog: todos os artigos, busca, categorias e anos ----------
+// ---------- Página Blog no estilo de vercel.com/blog ----------
+// Topo: até 3 destaques em cards grandes (posts com featured:true; se não houver, os mais novos).
+// Abaixo: grade com os demais. Com uma categoria selecionada, mostra só a grade filtrada.
+// Autor padrão dos posts; um post pode ter o próprio "author" em posts.js.
+const AUTHOR={name:'Humberto Crispim',role:'DevOps',photo:'./assets/favicon-180.png'};
+const vcDate=d=>new Date(d+'T12:00:00').toLocaleDateString('pt-BR',{day:'numeric',month:'long'});
+const vcHtml=(p,destaque)=>{const a=Object.assign({},AUTHOR,p.author||{}),cat=(p.tags||[])[0];return `<a class="vc-card${destaque?' vc-featured':''}" href="${postUrl(p)}">
+  <div class="vc-meta"><time datetime="${esc(p.date)}">${vcDate(p.date)}</time>${cat?`<span>${esc(cat)}</span>`:''}</div>
+  <h3>${esc(p.title)}</h3>
+  <p class="vc-sum">${esc(p.summary)}</p>
+  <div class="vc-author"><img src="${esc(a.photo)}" alt="" width="20" height="20"><span>${esc(a.name)}</span><small>${esc(a.role)}</small></div>
+</a>`;};
 const archive=document.querySelector('#archive');
 if(archive){
-  const search=document.querySelector('#archive-search'),chips=document.querySelector('#archive-tags'),count=document.querySelector('#archive-count');
+  // Quantos itens da grade aparecem antes do botão "Veja mais" (e quantos cada clique acrescenta).
+  const PAGE_CARDS=9;
+  const chips=document.querySelector('#archive-tags'),moreRow=document.querySelector('#archive-more-row'),moreBtn=document.querySelector('#archive-more');
   const params=new URLSearchParams(location.search);
-  const state={tag:allTags.includes(params.get('tag'))?params.get('tag'):null,q:''};
-  const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
-  chips.innerHTML=['',...allTags].map(t=>`<button type="button" data-tag="${esc(t)}">${t?esc(t):'Todas'}</button>`).join('');
+  const state={tag:allTags.includes(params.get('tag'))?params.get('tag'):null,limit:PAGE_CARDS};
+  chips.innerHTML=['',...allTags].map(t=>`<button type="button" data-tag="${esc(t)}">${t?esc(t):'Todos'}</button>`).join('');
   function render(){
     chips.querySelectorAll('button').forEach(c=>c.setAttribute('aria-pressed',String((c.dataset.tag||null)===state.tag)));
-    const q=norm(state.q.trim());
-    const items=POSTS.filter(p=>(!state.tag||(p.tags||[]).includes(state.tag))&&(!q||norm(p.title+' '+p.summary+' '+(p.tags||[]).join(' ')).includes(q)));
-    count.textContent=items.length===1?'1 artigo.':items.length+' artigos.';
-    if(!items.length){archive.innerHTML='<p class="empty">Nenhum artigo encontrado.</p>';return;}
-    const years=[...new Set(items.map(p=>p.date.slice(0,4)))];
-    archive.innerHTML=years.map(y=>`<section class="archive-year"><h2>${y}</h2><ul class="post-list">${items.filter(p=>p.date.startsWith(y)).map(p=>`<li class="post-row"><a href="${postUrl(p)}"><time datetime="${esc(p.date)}">${fmtDate(p.date).replace(/ \d{4}$/,'')}</time><div><h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p><div class="tags">${tagsHtml(p.tags)}</div></div><span class="arrow" aria-hidden="true">→</span></a></li>`).join('')}</ul></section>`).join('');
+    let destaques=[],lista;
+    if(state.tag)lista=POSTS.filter(p=>(p.tags||[]).includes(state.tag));
+    else{
+      destaques=POSTS.filter(p=>p.featured).slice(0,3);
+      if(!destaques.length)destaques=POSTS.slice(0,3);
+      lista=POSTS.filter(p=>!destaques.includes(p));
+    }
+    if(!destaques.length&&!lista.length){archive.innerHTML='<p class="empty">Nenhum artigo nesta categoria.</p>';moreRow.hidden=true;return;}
+    archive.innerHTML=(destaques.length?`<div class="vc-row">${destaques.map(p=>vcHtml(p,true)).join('')}</div>`:'')
+      +(lista.length?`<div class="vc-grid">${lista.slice(0,state.limit).map(p=>vcHtml(p,false)).join('')}</div>`:'');
+    moreRow.hidden=lista.length<=state.limit;
   }
-  chips.addEventListener('click',e=>{const c=e.target.closest('button');if(!c)return;state.tag=c.dataset.tag||null;history.replaceState(null,'',blogUrl(state.tag));render();});
-  search.addEventListener('input',()=>{state.q=search.value;render();});
+  // Hover nos cards: o resumo é digitado letra a letra com cursor de bloco, como num terminal.
+  // Nos destaques ele é redigitado; na grade ele fica escondido e aparece sendo digitado.
+  // O texto real fica no lugar (invisível) e a digitação acontece por cima, então o card não muda de tamanho.
+  // Só em telas com mouse; com movimento reduzido não anima.
+  const podeDigitar=()=>matchMedia('(hover: hover)').matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches;
+  archive.addEventListener('mouseover',e=>{
+    const card=e.target.closest('.vc-card');
+    if(!card||card.contains(e.relatedTarget)||!podeDigitar())return;
+    const h3=card.querySelector('.vc-sum');if(!h3||h3.querySelector('.type-layer'))return;
+    const texto=h3.textContent,layer=document.createElement('span'),typed=document.createElement('span'),cursor=document.createElement('span');
+    layer.className='type-layer';layer.setAttribute('aria-hidden','true');cursor.className='type-cursor';
+    layer.append(typed,cursor);h3.classList.add('is-typing');h3.append(layer);
+    let i=0;
+    const passo=()=>{if(!layer.isConnected)return;typed.textContent=texto.slice(0,++i);if(i<texto.length)card._typing=setTimeout(passo,/[,.;:]/.test(texto[i-1])?260:texto[i-1]===' '?70:38+Math.random()*30);};
+    card._typing=setTimeout(passo,150);
+  });
+  archive.addEventListener('mouseout',e=>{
+    const card=e.target.closest('.vc-card');
+    if(!card||card.contains(e.relatedTarget))return;
+    clearTimeout(card._typing);
+    const h3=card.querySelector('.vc-sum');h3?.querySelector('.type-layer')?.remove();h3?.classList.remove('is-typing');
+  });
+  chips.addEventListener('click',e=>{const c=e.target.closest('button');if(!c)return;state.tag=c.dataset.tag||null;state.limit=PAGE_CARDS;history.replaceState(null,'',blogUrl(state.tag));render();});
+  moreBtn.addEventListener('click',()=>{state.limit+=PAGE_CARDS;render();});
   render();
 }
 const footerTags=document.querySelector('#footer-tags');
 if(footerTags)footerTags.innerHTML=allTags.map(t=>`<li><a href="${blogUrl(t)}">${esc(t)}</a></li>`).join('');
+
+// ---------- TL;DR com IA ----------
+// Abre uma IA com um pedido de resumo do post. Usa sempre o endereço publicado (a IA não acessa localhost)
+// e indica também o arquivo .md, porque o texto da página é montado por JavaScript.
+const SITE_URL='https://humbertocrispim.github.io/humbertocrispim/';
+const AI_URLS={claude:'https://claude.ai/new?q=',chatgpt:'https://chatgpt.com/?q=',grok:'https://grok.com/?q='};
+function setupTldr(post){
+  const box=document.querySelector('#tldr');if(!box)return;
+  const pagina=SITE_URL+'post.html?p='+encodeURIComponent(post.slug),texto=SITE_URL+'posts/'+encodeURIComponent(post.slug)+'.md';
+  const pedido=`Por favor, use a busca na web para abrir e ler o artigo "${post.title}", de Humberto Crispim: ${pagina}
+O texto completo, em Markdown, está em: ${texto}
+
+Depois de ler o conteúdo real do artigo:
+1) Resuma os pontos mais importantes e a conclusão.
+2) Diga quais detalhes, exemplos e comandos o leitor perde por não ler o artigo completo. Seja específico o bastante para despertar a curiosidade.
+3) Lembre que ele pode continuar fazendo perguntas sobre o artigo neste chat.
+4) Sugira uma boa pergunta de acompanhamento para ele começar.`;
+  const url=ai=>AI_URLS[ai]+encodeURIComponent(pedido);
+  const link=document.querySelector('#tldr-link'),more=document.querySelector('#tldr-more'),menu=document.querySelector('#tldr-menu');
+  link.href=url('claude');
+  menu.querySelectorAll('[data-ai]').forEach(a=>a.href=url(a.dataset.ai));
+  const abrir=v=>{menu.hidden=!v;more.setAttribute('aria-expanded',String(v));if(v)menu.querySelector('a').focus();};
+  more.addEventListener('click',e=>{e.stopPropagation();abrir(menu.hidden);});
+  link.addEventListener('contextmenu',e=>{e.preventDefault();abrir(true);});
+  menu.addEventListener('click',()=>abrir(false));
+  document.addEventListener('click',e=>{if(!box.contains(e.target))abrir(false);});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!menu.hidden){abrir(false);more.focus();}});
+  box.hidden=false;
+}
 
 // ---------- Página do post ----------
 const body=document.querySelector('#post-body');
@@ -94,6 +162,7 @@ if(body){
   title.textContent=post.title;summary.textContent=post.summary;
   meta.innerHTML=`<time datetime="${esc(post.date)}">${fmtDate(post.date)}</time>`;
   tagsEl.innerHTML=(post.tags||[]).map(t=>`<a class="tag" href="${blogUrl(t)}">${esc(t)}</a>`).join('');
+  setupTldr(post);
   const newer=POSTS[idx-1],older=POSTS[idx+1];
   nav.innerHTML=(older?`<a href="${postUrl(older)}"><span>← Anterior</span>${esc(older.title)}</a>`:'<span></span>')+(newer?`<a class="next" href="${postUrl(newer)}"><span>Próximo →</span>${esc(newer.title)}</a>`:'');
   fetch('./posts/'+encodeURIComponent(post.slug)+'.md').then(r=>{if(!r.ok)throw new Error(r.status);return r.text();}).then(text=>{

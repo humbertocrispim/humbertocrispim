@@ -2,6 +2,8 @@
 // 1. crie o arquivo posts/<slug>.md com o conteúdo em Markdown;
 // 2. adicione um item abaixo com o mesmo slug.
 // featured: true coloca o post na seção "Em destaque" (até 3).
+// image: capa do card na página Blog, por exemplo 'assets/posts/bem-vindo.jpg' (2:1, ~1200x600).
+//        Sem image, o card mostra uma capa gerada com o título.
 window.POSTS = [
   {
     slug: 'bem-vindo',
@@ -13,6 +15,7 @@ window.POSTS = [
   },
   {
     slug: 'docker-multi-stage',
+    image: 'assets/posts/docker-multi-stage.jpg',
     title: 'Imagens Docker menores com build multi-stage',
     date: '2026-11-05',
     summary: 'Separe compilação e execução em estágios diferentes e envie para produção só o que a aplicação precisa.',
